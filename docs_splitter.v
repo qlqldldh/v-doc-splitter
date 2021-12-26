@@ -13,7 +13,7 @@ fn (mut c Content) fill_descriptions(description string) {
 	c.description += description
 }
 
-fn split_contents_from_str(docs_str string) []string {
+fn split_contents_str(docs_str string) []string {
 	splitter := "\n## " // ##: markdown symbol meaning subtitle
 	return docs_str.split(splitter)
 }
@@ -39,7 +39,7 @@ fn create_docs_file(content_obj Content) ? {
 
 fn main() {
 	docs_file := $embed_file("docs.md") // TODO: replace it to the V document url
-	contents_str := split_contents_from_str(docs_file.to_string())
+	contents_str := split_contents_str(docs_file.to_string())
 
 	mut content_obj := Content{}
 	for content_str in contents_str {
